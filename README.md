@@ -1,1 +1,1 @@
-# cs-aspose-word
+# cs-com.cs.aspose.aspose-word
