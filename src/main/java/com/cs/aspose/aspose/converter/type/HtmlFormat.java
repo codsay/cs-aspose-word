@@ -6,17 +6,18 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * HTML format.
+ * HTML format. <br />
+ * Apply for {@code String} type.
  *
- * @@author Hoang DANG.
+ * @author Hoang DANG.
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface HtmlFormat {
 
     /**
-     * @return support tags.
+     * @return allowable tags.
      */
-    String[] supportTags() default {};
+    String[] allowTags() default {};
 
 }

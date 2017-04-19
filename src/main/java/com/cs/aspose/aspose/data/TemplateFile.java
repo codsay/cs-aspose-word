@@ -1,9 +1,11 @@
 package com.cs.aspose.aspose.data;
 
 /**
+ * Template file.
+ *
  * @author Hoang DANG.
  */
-public final class DocumentTemplateFile {
+public class TemplateFile {
 
     private String fileName;
     private String field;
@@ -15,7 +17,7 @@ public final class DocumentTemplateFile {
      * @param fileName
      * @param field
      */
-    public DocumentTemplateFile(String fileName, String field) {
+    public TemplateFile(String fileName, String field) {
         this.fileName = fileName;
         this.field = field;
     }
@@ -25,7 +27,7 @@ public final class DocumentTemplateFile {
      *
      * @param fileName
      */
-    public DocumentTemplateFile(String fileName) {
+    public TemplateFile(String fileName) {
         this(fileName, null);
     }
 

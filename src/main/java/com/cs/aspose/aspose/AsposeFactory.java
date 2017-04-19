@@ -1,6 +1,6 @@
 package com.cs.aspose.aspose;
 
-import com.cs.aspose.aspose.data.DocumentTemplateDto;
+import com.cs.aspose.aspose.data.DocumentTemplate;
 import com.cs.aspose.aspose.util.AsposeUtil;
 import com.cs.aspose.aspose.util.IDocumentMergeCallback;
 
@@ -21,7 +21,7 @@ public class AsposeFactory {
      * @param templateDto
      * @return
      */
-    public <T> byte[] generateDocument(DocumentTemplateDto<T> templateDto) {
+    public <T> byte[] generateDocument(DocumentTemplate<T> templateDto) {
         return generateDocument(templateDto, null);
     }
 
@@ -32,7 +32,7 @@ public class AsposeFactory {
      * @param callback
      * @return
      */
-    public <T> byte[] generateDocument(DocumentTemplateDto<T> templateDto, IDocumentMergeCallback<T> callback) {
+    public <T> byte[] generateDocument(DocumentTemplate<T> templateDto, IDocumentMergeCallback<T> callback) {
         return AsposeUtil.generateDocument(context, templateDto, callback);
     }
 

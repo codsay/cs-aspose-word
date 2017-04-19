@@ -1,9 +1,11 @@
-package com.cs.aspose.aspose.converter.type;
+package com.cs.aspose.aspose.data;
+
+import com.cs.aspose.aspose.converter.type.HtmlFormat;
 
 /**
  * HTML value.
  *
- * @@author Hoang DANG.
+ * @author Hoang DANG.
  */
 public class HtmlValue {
 

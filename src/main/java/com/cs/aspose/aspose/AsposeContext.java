@@ -101,7 +101,7 @@ public class AsposeContext {
         List<AsposeConverter> typeConverters = getConverter(originalValue.getClass());
         if (typeConverters != null) {
             for (AsposeConverter typeConverter : typeConverters) {
-                value = typeConverter.convertObject(this, value);
+                value = typeConverter.convertObject(this, originalValue, value);
             }
         }
 

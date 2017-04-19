@@ -2,32 +2,39 @@ import com.aspose.words.SaveFormat;
 import com.cs.aspose.aspose.AsposeContext;
 import com.cs.aspose.aspose.AsposeFactory;
 import com.cs.aspose.aspose.MessageResource;
-import com.cs.aspose.aspose.data.DocumentTemplateDto;
-import com.cs.aspose.aspose.data.DocumentTemplateFile;
-import com.cs.aspose.aspose.data.ImageDto;
+import com.cs.aspose.aspose.data.DocumentTemplate;
+import com.cs.aspose.aspose.data.TemplateFile;
+import com.cs.aspose.aspose.data.ImageValue;
 import org.junit.Test;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 /**
- * Created by Hoang DANG.
+ * @author Hoang DANG.
  */
 public class AsposeTest {
+
+    private DateTimeFormatter DATE_TIME_FORMATTER = new DateTimeFormatterBuilder()
+        .appendPattern("dd/MM/yyyy HH:mm")
+        .toFormatter();
 
     @Test
     public void generateDocument() throws IOException {
         Hero hero = createHero();
-        List<DocumentTemplateFile> templates = new ArrayList<>();
-        templates.add(new DocumentTemplateFile("hero.docx"));
-        templates.add(new DocumentTemplateFile("skill.docx", "skills"));
+        List<TemplateFile> templates = new ArrayList<>();
+        templates.add(new TemplateFile("hero.docx"));
+        templates.add(new TemplateFile("skill.docx", "skills"));
 
-        byte[] data = getAsposeFactory().generateDocument(new DocumentTemplateDto<>(hero, templates, SaveFormat.PDF));
+        byte[] data = getAsposeFactory().generateDocument(new DocumentTemplate<>(hero, templates, SaveFormat.PDF));
 
         File file = File.createTempFile("cs_aspose_word_test", Long.toString(new Date().getTime()) + ".pdf");
         try (FileOutputStream fos = new FileOutputStream(file)) {
@@ -50,6 +57,12 @@ public class AsposeTest {
                         return language + "_" + key;
                     }
                 })
+                .register(LocalDateTime.class, (ctx, originalValue, value) -> {
+                    if (!(value instanceof LocalDateTime)) {
+                        return value;
+                    }
+                    return DATE_TIME_FORMATTER.format((LocalDateTime) value);
+                })
         );
 
         return factory;
@@ -58,7 +71,7 @@ public class AsposeTest {
     private Hero createHero() {
         Hero hero = new Hero();
         hero.setName("Codsay");
-        hero.setAge(26);
+        hero.setCreatedDate(LocalDateTime.now());
         hero.setAuto(new SpecificPower(new Skill("Simple Kick", 10), "Auto hit"));
         hero.getSkills().add(new Skill("Hit the sky", 25));
         hero.getSkills().add(new Skill("Trust me", 40));
@@ -69,8 +82,8 @@ public class AsposeTest {
     public static class Hero {
 
         private String name;
-        private int age;
-        private ImageDto avatar;
+        private LocalDateTime createdDate;
+        private ImageValue avatar;
 
         private List<Skill> skills = new ArrayList<>();
         private SpecificPower active;
@@ -84,19 +97,19 @@ public class AsposeTest {
             this.name = name;
         }
 
-        public int getAge() {
-            return age;
+        public LocalDateTime getCreatedDate() {
+            return createdDate;
         }
 
-        public void setAge(int age) {
-            this.age = age;
+        public void setCreatedDate(LocalDateTime createdDate) {
+            this.createdDate = createdDate;
         }
 
-        public ImageDto getAvatar() {
+        public ImageValue getAvatar() {
             return avatar;
         }
 
-        public void setAvatar(ImageDto avatar) {
+        public void setAvatar(ImageValue avatar) {
             this.avatar = avatar;
         }
 

@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * @author Hoang DANG.
  */
-public class ImageDto {
+public class ImageValue {
 
     private byte[] data;
     private double width;
@@ -14,7 +14,7 @@ public class ImageDto {
     /**
      * Constructor.
      */
-    public ImageDto(byte[] data, double width, double height) {
+    public ImageValue(byte[] data, double width, double height) {
         this.setWidth(width);
         this.setHeight(height);
         this.setData(data);
@@ -47,4 +47,5 @@ public class ImageDto {
     public void setHeight(double height) {
         this.height = height;
     }
+    
 }

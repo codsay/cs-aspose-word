@@ -4,22 +4,15 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import java.time.format.DateTimeFormatter;
 
 /**
- * Time format.
+ * Image format.<br />
+ * Apply for byte array ({@code byte[]}) type.
  *
  * @author Hoang DANG.
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface DateFormat {
-
-    /**
-     * @return true if the formatted value should have weekday name.
-     */
-    boolean hasWeekday() default false;
-
-    String pattern() default "";
+public @interface ImageFormat {
 
 }

@@ -14,6 +14,6 @@ public interface AsposeConverter {
 	 * @param value
 	 * @return converted value
 	 */
-	Object convertObject(AsposeContext asposeContext, Object value);
+	Object convertObject(AsposeContext asposeContext, Object originalValue, Object value);
 
 }

@@ -1,8 +1,8 @@
 package com.cs.aspose.aspose.util;
 
 import com.cs.aspose.aspose.*;
-import com.cs.aspose.aspose.data.DocumentTemplateDto;
-import com.cs.aspose.aspose.data.DocumentTemplateFile;
+import com.cs.aspose.aspose.data.DocumentTemplate;
+import com.cs.aspose.aspose.data.TemplateFile;
 import com.cs.aspose.aspose.handler.HandleMergeField;
 import com.aspose.words.*;
 import org.apache.commons.beanutils.PropertyUtils;
@@ -45,7 +45,7 @@ public class AsposeUtil {
      * @param templateDto
      * @return
      */
-    public static <T> byte[] generateDocument(AsposeContext context, DocumentTemplateDto<T> templateDto) {
+    public static <T> byte[] generateDocument(AsposeContext context, DocumentTemplate<T> templateDto) {
         return generateDocument(context, templateDto, null);
     }
 
@@ -56,9 +56,9 @@ public class AsposeUtil {
      * @param callback
      * @return
      */
-    public static <T> byte[] generateDocument(AsposeContext context, DocumentTemplateDto<T> templateDto, IDocumentMergeCallback<T> callback) {
+    public static <T> byte[] generateDocument(AsposeContext context, DocumentTemplate<T> templateDto, IDocumentMergeCallback<T> callback) {
         List<Document> documents = new ArrayList<>(templateDto.getFiles().size());
-        for (DocumentTemplateFile file : templateDto.getFiles()) {
+        for (TemplateFile file : templateDto.getFiles()) {
             Object rootValue = templateDto.getData();
             if (StringUtils.isNotEmpty(file.getField())) {
                 try {

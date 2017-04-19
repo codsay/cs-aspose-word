@@ -3,20 +3,20 @@ package com.cs.aspose.aspose.data;
 import java.util.List;
 
 /**
- * Document template DTO.
+ * Document template.
  *
  * @author Hoang DANG.
  */
-public class DocumentTemplateDto<T> {
+public class DocumentTemplate<T> {
 
     private T data;
-    private List<DocumentTemplateFile> files;
+    private List<TemplateFile> files;
     private int format;
 
     /**
      * Constructor.
      */
-    public DocumentTemplateDto(T data, List<DocumentTemplateFile> files, int format) {
+    public DocumentTemplate(T data, List<TemplateFile> files, int format) {
         this.data = data;
         this.files = files;
         this.format = format;
@@ -39,14 +39,14 @@ public class DocumentTemplateDto<T> {
     /**
      * @return Returns the files.
      */
-    public List<DocumentTemplateFile> getFiles() {
+    public List<TemplateFile> getFiles() {
         return files;
     }
 
     /**
      * @param files Is the files to set.
      */
-    public void setFiles(List<DocumentTemplateFile> files) {
+    public void setFiles(List<TemplateFile> files) {
         this.files = files;
     }
 

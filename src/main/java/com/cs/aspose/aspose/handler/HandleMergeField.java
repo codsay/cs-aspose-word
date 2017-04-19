@@ -1,7 +1,7 @@
 package com.cs.aspose.aspose.handler;
 
-import com.cs.aspose.aspose.data.ImageDto;
-import com.cs.aspose.aspose.converter.type.HtmlValue;
+import com.cs.aspose.aspose.data.ImageValue;
+import com.cs.aspose.aspose.data.HtmlValue;
 import com.aspose.words.*;
 
 import java.awt.*;
@@ -44,11 +44,11 @@ public class HandleMergeField implements IFieldMergingCallback {
 	@Override
 	public void imageFieldMerging(ImageFieldMergingArgs field) throws Exception {
 		Object value = field.getFieldValue();
-		if (!(value instanceof ImageDto)) {
+		if (!(value instanceof ImageValue)) {
 			return;
 		}
 
-		ImageDto imageDto = (ImageDto) value;
+		ImageValue imageDto = (ImageValue) value;
 		try {
 			field.setImageStream(new ByteArrayInputStream(imageDto.getData()));
 		} catch (Exception e) {
